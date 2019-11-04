@@ -17,7 +17,8 @@ function fib( index ) {
 }
 
 sub.on( 'message', function( channel, message ) {
-  redisClient.hset( 'values', message, fib( parseInt( message ) ) )
+  const val = fib( parseInt( message ) )
+  redisClient.hset( 'values', message, val )
 } )
 
 sub.subscribe( 'insert' )
